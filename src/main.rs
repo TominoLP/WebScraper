@@ -13,6 +13,26 @@ async fn main() {
     println!("Enter a URL: ");
     std::io::stdin().read_line(&mut input).unwrap();
     let url = input.trim();
+    
+    // check if url is empty
+    if url.is_empty() {
+        println!("URL is empty");
+        return;
+    }
+    
+    // fix url if it doesn't have http
+    let mut url = url.to_string();
+    if !url.starts_with("http") {
+        url = format!("https://{}", url);
+    }
+    
+    // check if url is valid using regex
+    let re = regex::Regex::new(r"^https?://").unwrap();
+    if !re.is_match(&url) {
+        println!("Invalid URL");
+        return;
+    }
+    
 
     // Make an HTTP GET request
     let client = Client::new();
