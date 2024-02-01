@@ -2,9 +2,9 @@ name: Rust
 
 on:
   push:
-    branches: [ "build/workflows" ]
+    branches: [ "devel" ]
   pull_request:
-    branches: [ "build/workflows" ]
+    branches: [ "devel" ]
 
 env:
   CARGO_TERM_COLOR: always
