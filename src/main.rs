@@ -8,8 +8,11 @@ use select::document::Document;
 #[tokio::main]
 async fn main() {
     
-    // Replace the URL with the target webpage
-    let url = "https://www.google.de";
+    // get user input for url
+    let mut input = String::new();
+    println!("Enter a URL: ");
+    std::io::stdin().read_line(&mut input).unwrap();
+    let url = input.trim();
 
     // Make an HTTP GET request
     let client = Client::new();
